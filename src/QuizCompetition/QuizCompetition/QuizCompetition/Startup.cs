@@ -1,7 +1,11 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(QuizCompetition.Startup))]
+[assembly: OwinStartup(typeof(QuizCompetition.Startup))]
+
 namespace QuizCompetition
 {
     public partial class Startup
