@@ -6,6 +6,7 @@ using Microsoft.Owin;
 using Owin;
 using Autofac;
 using Autofac.Integration.WebApi;
+using QuizCompetition.AutoFac;
 
 [assembly: OwinStartup(typeof(QuizCompetition.Startup))]
 
@@ -18,7 +19,7 @@ namespace QuizCompetition
             
             var config = WebApiConfig.OwinWebApiConfiguration(new HttpConfiguration());
             
-            var container = ContainerConfig.Configure();
+            var container = ContainerBuilerCommon.GetWebApiContainer();
        
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 

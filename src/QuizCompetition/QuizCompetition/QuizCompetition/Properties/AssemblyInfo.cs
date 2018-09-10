@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using log4net.Config;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -13,6 +14,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// reference：http://logging.apache.org/log4net/release/manual/configuration.html
+[assembly: XmlConfigurator(Watch = true, ConfigFile = "Log4Net.config")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
