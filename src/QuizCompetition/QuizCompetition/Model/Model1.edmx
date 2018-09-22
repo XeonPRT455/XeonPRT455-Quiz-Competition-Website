@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuizCompetitionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_options">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="OptionId" Type="int" Nullable="false" />
+          <Property Name="OptionContent" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Question_Quiz">
+          <Key>
+            <PropertyRef Name="QuizId" />
+          </Key>
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_quiz">
+          <Key>
+            <PropertyRef Name="QuizId" />
+          </Key>
+          <Property Name="QuizId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuizName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Duration" Type="int" />
+        </EntityType>
+        <EntityType Name="t_QuizInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Record" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="SpareTime" Type="float" />
+        </EntityType>
+        <EntityType Name="t_role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ScoreInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserRole" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="int" />
+          <Property Name="Birth" Type="datetime" />
+          <Property Name="LastTimeLogOn" Type="datetime" />
+          <Property Name="Credits" Type="float" />
+        </EntityType>
+        <Association Name="FK_QI1">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_QuizInfo" Type="Self.t_QuizInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_QuizInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QI2">
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="1" />
+          <End Role="t_QuizInfo" Type="Self.t_QuizInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_quiz">
+              <PropertyRef Name="QuizId" />
+            </Principal>
+            <Dependent Role="t_QuizInfo">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QS1">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_ScoreInfo" Type="Self.t_ScoreInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_ScoreInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QS2">
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="1" />
+          <End Role="t_ScoreInfo" Type="Self.t_ScoreInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_quiz">
+              <PropertyRef Name="QuizId" />
+            </Principal>
+            <Dependent Role="t_ScoreInfo">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTION_OPTIONS_QUESTIONID">
+          <End Role="t_question" Type="Self.t_question" Multiplicity="1" />
+          <End Role="t_options" Type="Self.t_options" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="t_options">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTION_QQ1">
+          <End Role="t_question" Type="Self.t_question" Multiplicity="1" />
+          <End Role="t_Question_Quiz" Type="Self.t_Question_Quiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="t_Question_Quiz">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTION_QQ2">
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="1" />
+          <End Role="t_Question_Quiz" Type="Self.t_Question_Quiz" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_quiz">
+              <PropertyRef Name="QuizId" />
+            </Principal>
+            <Dependent Role="t_Question_Quiz">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTION_USER_CREATORID">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_question" Type="Self.t_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_question">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUIZ_USER_CREATORID">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_quiz">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuizCompetitionModelStoreContainer">
+          <EntitySet Name="t_options" EntityType="Self.t_options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_question" EntityType="Self.t_question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Question_Quiz" EntityType="Self.t_Question_Quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_quiz" EntityType="Self.t_quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_QuizInfo" EntityType="Self.t_QuizInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_role" EntityType="Self.t_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ScoreInfo" EntityType="Self.t_ScoreInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_user" EntityType="Self.t_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_QI1" Association="Self.FK_QI1">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_QuizInfo" EntitySet="t_QuizInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QI2" Association="Self.FK_QI2">
+            <End Role="t_quiz" EntitySet="t_quiz" />
+            <End Role="t_QuizInfo" EntitySet="t_QuizInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QS1" Association="Self.FK_QS1">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_ScoreInfo" EntitySet="t_ScoreInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QS2" Association="Self.FK_QS2">
+            <End Role="t_quiz" EntitySet="t_quiz" />
+            <End Role="t_ScoreInfo" EntitySet="t_ScoreInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTION_OPTIONS_QUESTIONID" Association="Self.FK_QUESTION_OPTIONS_QUESTIONID">
+            <End Role="t_question" EntitySet="t_question" />
+            <End Role="t_options" EntitySet="t_options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTION_QQ1" Association="Self.FK_QUESTION_QQ1">
+            <End Role="t_question" EntitySet="t_question" />
+            <End Role="t_Question_Quiz" EntitySet="t_Question_Quiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTION_QQ2" Association="Self.FK_QUESTION_QQ2">
+            <End Role="t_quiz" EntitySet="t_quiz" />
+            <End Role="t_Question_Quiz" EntitySet="t_Question_Quiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTION_USER_CREATORID" Association="Self.FK_QUESTION_USER_CREATORID">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_question" EntitySet="t_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUIZ_USER_CREATORID" Association="Self.FK_QUIZ_USER_CREATORID">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_quiz" EntitySet="t_quiz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuizCompetitionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_options">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="OptionId" Type="Int32" Nullable="false" />
+          <Property Name="OptionContent" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="t_question" Relationship="Self.FK_QUESTION_OPTIONS_QUESTIONID" FromRole="t_options" ToRole="t_question" />
+        </EntityType>
+        <EntityType Name="t_question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="t_options" Relationship="Self.FK_QUESTION_OPTIONS_QUESTIONID" FromRole="t_question" ToRole="t_options" />
+          <NavigationProperty Name="t_user" Relationship="Self.FK_QUESTION_USER_CREATORID" FromRole="t_question" ToRole="t_user" />
+          <NavigationProperty Name="t_quiz" Relationship="Self.t_Question_Quiz" FromRole="t_question" ToRole="t_quiz" />
+        </EntityType>
+        <EntityType Name="t_quiz">
+          <Key>
+            <PropertyRef Name="QuizId" />
+          </Key>
+          <Property Name="QuizId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuizName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Duration" Type="Int32" />
+          <NavigationProperty Name="t_QuizInfo" Relationship="Self.FK_QI2" FromRole="t_quiz" ToRole="t_QuizInfo" />
+          <NavigationProperty Name="t_ScoreInfo" Relationship="Self.FK_QS2" FromRole="t_quiz" ToRole="t_ScoreInfo" />
+          <NavigationProperty Name="t_user" Relationship="Self.FK_QUIZ_USER_CREATORID" FromRole="t_quiz" ToRole="t_user" />
+          <NavigationProperty Name="t_question" Relationship="Self.t_Question_Quiz" FromRole="t_quiz" ToRole="t_question" />
+        </EntityType>
+        <EntityType Name="t_QuizInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Record" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SpareTime" Type="Double" />
+          <NavigationProperty Name="t_quiz" Relationship="Self.FK_QI2" FromRole="t_QuizInfo" ToRole="t_quiz" />
+          <NavigationProperty Name="t_user" Relationship="Self.FK_QI1" FromRole="t_QuizInfo" ToRole="t_user" />
+        </EntityType>
+        <EntityType Name="t_role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ScoreInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_quiz" Relationship="Self.FK_QS2" FromRole="t_ScoreInfo" ToRole="t_quiz" />
+          <NavigationProperty Name="t_user" Relationship="Self.FK_QS1" FromRole="t_ScoreInfo" ToRole="t_user" />
+        </EntityType>
+        <EntityType Name="t_user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NickName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserRole" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Int32" />
+          <Property Name="Birth" Type="DateTime" Precision="3" />
+          <Property Name="LastTimeLogOn" Type="DateTime" Precision="3" />
+          <Property Name="Credits" Type="Double" />
+          <NavigationProperty Name="t_question" Relationship="Self.FK_QUESTION_USER_CREATORID" FromRole="t_user" ToRole="t_question" />
+          <NavigationProperty Name="t_quiz" Relationship="Self.FK_QUIZ_USER_CREATORID" FromRole="t_user" ToRole="t_quiz" />
+          <NavigationProperty Name="t_QuizInfo" Relationship="Self.FK_QI1" FromRole="t_user" ToRole="t_QuizInfo" />
+          <NavigationProperty Name="t_ScoreInfo" Relationship="Self.FK_QS1" FromRole="t_user" ToRole="t_ScoreInfo" />
+        </EntityType>
+        <Association Name="FK_QUESTION_OPTIONS_QUESTIONID">
+          <End Role="t_question" Type="Self.t_question" Multiplicity="1" />
+          <End Role="t_options" Type="Self.t_options" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="t_options">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUESTION_USER_CREATORID">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_question" Type="Self.t_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_question">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QI2">
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="1" />
+          <End Role="t_QuizInfo" Type="Self.t_QuizInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_quiz">
+              <PropertyRef Name="QuizId" />
+            </Principal>
+            <Dependent Role="t_QuizInfo">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QS2">
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="1" />
+          <End Role="t_ScoreInfo" Type="Self.t_ScoreInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_quiz">
+              <PropertyRef Name="QuizId" />
+            </Principal>
+            <Dependent Role="t_ScoreInfo">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QUIZ_USER_CREATORID">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_quiz">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QI1">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_QuizInfo" Type="Self.t_QuizInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_QuizInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QS1">
+          <End Role="t_user" Type="Self.t_user" Multiplicity="1" />
+          <End Role="t_ScoreInfo" Type="Self.t_ScoreInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="t_ScoreInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="t_Question_Quiz">
+          <End Role="t_question" Type="Self.t_question" Multiplicity="0..1" />
+          <End Role="t_quiz" Type="Self.t_quiz" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="QuizCompetitionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_options" EntityType="Self.t_options" />
+          <EntitySet Name="t_question" EntityType="Self.t_question" />
+          <EntitySet Name="t_quiz" EntityType="Self.t_quiz" />
+          <EntitySet Name="t_QuizInfo" EntityType="Self.t_QuizInfo" />
+          <EntitySet Name="t_role" EntityType="Self.t_role" />
+          <EntitySet Name="t_ScoreInfo" EntityType="Self.t_ScoreInfo" />
+          <EntitySet Name="t_user" EntityType="Self.t_user" />
+          <AssociationSet Name="FK_QUESTION_OPTIONS_QUESTIONID" Association="Self.FK_QUESTION_OPTIONS_QUESTIONID">
+            <End Role="t_question" EntitySet="t_question" />
+            <End Role="t_options" EntitySet="t_options" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUESTION_USER_CREATORID" Association="Self.FK_QUESTION_USER_CREATORID">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_question" EntitySet="t_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QI2" Association="Self.FK_QI2">
+            <End Role="t_quiz" EntitySet="t_quiz" />
+            <End Role="t_QuizInfo" EntitySet="t_QuizInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QS2" Association="Self.FK_QS2">
+            <End Role="t_quiz" EntitySet="t_quiz" />
+            <End Role="t_ScoreInfo" EntitySet="t_ScoreInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QUIZ_USER_CREATORID" Association="Self.FK_QUIZ_USER_CREATORID">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_quiz" EntitySet="t_quiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QI1" Association="Self.FK_QI1">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_QuizInfo" EntitySet="t_QuizInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QS1" Association="Self.FK_QS1">
+            <End Role="t_user" EntitySet="t_user" />
+            <End Role="t_ScoreInfo" EntitySet="t_ScoreInfo" />
+          </AssociationSet>
+          <AssociationSet Name="t_Question_Quiz" Association="Self.t_Question_Quiz">
+            <End Role="t_question" EntitySet="t_question" />
+            <End Role="t_quiz" EntitySet="t_quiz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuizCompetitionModelStoreContainer" CdmEntityContainer="QuizCompetitionEntities">
+          <EntitySetMapping Name="t_options">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_options">
+              <MappingFragment StoreEntitySet="t_options">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="OptionContent" ColumnName="OptionContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_question">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_question">
+              <MappingFragment StoreEntitySet="t_question">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_quiz">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_quiz">
+              <MappingFragment StoreEntitySet="t_quiz">
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="QuizName" ColumnName="QuizName" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_QuizInfo">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_QuizInfo">
+              <MappingFragment StoreEntitySet="t_QuizInfo">
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Record" ColumnName="Record" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="SpareTime" ColumnName="SpareTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_role">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_role">
+              <MappingFragment StoreEntitySet="t_role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ScoreInfo">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_ScoreInfo">
+              <MappingFragment StoreEntitySet="t_ScoreInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_user">
+            <EntityTypeMapping TypeName="QuizCompetitionModel.t_user">
+              <MappingFragment StoreEntitySet="t_user">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="LastTimeLogOn" ColumnName="LastTimeLogOn" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="t_Question_Quiz" TypeName="QuizCompetitionModel.t_Question_Quiz" StoreEntitySet="t_Question_Quiz">
+            <EndProperty Name="t_question">
+              <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+            </EndProperty>
+            <EndProperty Name="t_quiz">
+              <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

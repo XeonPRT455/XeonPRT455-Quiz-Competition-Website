@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,19 +9,24 @@ using System.Web.Http;
 
 namespace QuizCompetition.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ValuesController : ApiController
     {
+        private IUserService UserService = BLL.Container.Resolve<IUserService>();
         // GET api/values
-        public IEnumerable<string> Get()
+        public List<t_user> Get()
+
         {
-            return new string[] { "value1", "value2" };
+            List<t_user> list = UserService.GetModels(p => true).ToList();
+            return list;
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            var user = UserService.GetModels(p => p.UserId == id).FirstOrDefault();
+            String name = user.NickName;
+            return name;
         }
 
         // POST api/values
