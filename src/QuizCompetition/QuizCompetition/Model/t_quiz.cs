@@ -17,6 +17,7 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_quiz()
         {
+            this.t_Question_Quiz = new HashSet<t_Question_Quiz>();
             this.t_QuizInfo = new HashSet<t_QuizInfo>();
             this.t_ScoreInfo = new HashSet<t_ScoreInfo>();
         }
@@ -28,10 +29,11 @@ namespace Model
         public Nullable<int> Duration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Question_Quiz> t_Question_Quiz { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_QuizInfo> t_QuizInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_ScoreInfo> t_ScoreInfo { get; set; }
         public virtual t_user t_user { get; set; }
-        public virtual t_question t_question { get; set; }
     }
 }

@@ -14,7 +14,16 @@ namespace Model
     
     public partial class t_role
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_role()
+        {
+            this.t_user = new HashSet<t_user>();
+        }
+    
         public int RoleId { get; set; }
         public string RoleName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_user> t_user { get; set; }
     }
 }

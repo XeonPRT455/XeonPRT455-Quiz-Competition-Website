@@ -24,7 +24,7 @@ namespace Model
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string NickName { get; set; }
-        public string UserRole { get; set; }
+        public int UserRole { get; set; }
         public string PassWord { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Email { get; set; }
@@ -39,6 +39,7 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_quiz> t_quiz { get; set; }
         public virtual t_QuizInfo t_QuizInfo { get; set; }
+        public virtual t_role t_role { get; set; }
         public virtual t_ScoreInfo t_ScoreInfo { get; set; }
     }
 }

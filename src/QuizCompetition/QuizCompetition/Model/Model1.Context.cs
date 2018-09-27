@@ -27,6 +27,7 @@ namespace Model
     
         public virtual DbSet<t_options> t_options { get; set; }
         public virtual DbSet<t_question> t_question { get; set; }
+        public virtual DbSet<t_Question_Quiz> t_Question_Quiz { get; set; }
         public virtual DbSet<t_quiz> t_quiz { get; set; }
         public virtual DbSet<t_QuizInfo> t_QuizInfo { get; set; }
         public virtual DbSet<t_role> t_role { get; set; }

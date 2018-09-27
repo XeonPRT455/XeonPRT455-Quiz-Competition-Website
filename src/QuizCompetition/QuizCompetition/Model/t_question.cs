@@ -17,7 +17,8 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_question()
         {
-            this.t_quiz = new HashSet<t_quiz>();
+            this.t_options = new HashSet<t_options>();
+            this.t_Question_Quiz = new HashSet<t_Question_Quiz>();
         }
     
         public int QuestionId { get; set; }
@@ -25,9 +26,10 @@ namespace Model
         public int CreatorId { get; set; }
         public string Answer { get; set; }
     
-        public virtual t_options t_options { get; set; }
-        public virtual t_user t_user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<t_quiz> t_quiz { get; set; }
+        public virtual ICollection<t_options> t_options { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Question_Quiz> t_Question_Quiz { get; set; }
+        public virtual t_user t_user { get; set; }
     }
 }

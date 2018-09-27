@@ -4,22 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c4df949a3cff41d59c179ed45f501e28" Name="Diagram1">
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_options" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_question" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_quiz" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_QuizInfo" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_role" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_ScoreInfo" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuizCompetitionModel.t_user" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+      <Diagram DiagramId="1129757a002048dc975b353583290ee8" Name="Diagram1">
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_options" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_question" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_Question_Quiz" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_quiz" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_QuizInfo" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_role" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_ScoreInfo" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizCompetitionModel.t_user" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="QuizCompetitionModel.FK_QUESTION_OPTIONS_QUESTIONID" ManuallyRouted="false" />
+        <AssociationConnector Association="QuizCompetitionModel.FK_QUESTION_QQ1" ManuallyRouted="false" />
         <AssociationConnector Association="QuizCompetitionModel.FK_QUESTION_USER_CREATORID" ManuallyRouted="false" />
+        <AssociationConnector Association="QuizCompetitionModel.FK_QUESTION_QQ2" ManuallyRouted="false" />
         <AssociationConnector Association="QuizCompetitionModel.FK_QI2" ManuallyRouted="false" />
-        <AssociationConnector Association="QuizCompetitionModel.FK_QS2" ManuallyRouted="false" />
+        <AssociationConnector Association="QuizCompetitionModel.FK_QI21" ManuallyRouted="false" />
         <AssociationConnector Association="QuizCompetitionModel.FK_QUIZ_USER_CREATORID" ManuallyRouted="false" />
         <AssociationConnector Association="QuizCompetitionModel.FK_QI1" ManuallyRouted="false" />
-        <AssociationConnector Association="QuizCompetitionModel.FK_QS1" ManuallyRouted="false" />
-        <AssociationConnector Association="QuizCompetitionModel.t_Question_Quiz" ManuallyRouted="false" />
+        <AssociationConnector Association="QuizCompetitionModel.FK_USER_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="QuizCompetitionModel.FK_QI11" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
