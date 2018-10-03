@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+
+<style>
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+</head>
+ 
+<body>
+<div class="container">
+  <div class="row myCenter">
+    <div class="col-xs-6 col-md-4 col-center-block">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <label for="username" class="sr-only">username</label>
+        <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me">
+            Remember me  </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
