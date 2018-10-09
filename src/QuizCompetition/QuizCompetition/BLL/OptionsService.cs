@@ -15,4 +15,11 @@ namespace BLL
         {
             Dal = OptionsDAL;
         }
+
+        public List<t_options> GetOptionsList(int id)
+        {
+            List<t_options> lo = GetModels(p => p.QuestionId == id).ToList();
+            return lo;
+        }
     }
+}

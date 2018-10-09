@@ -15,8 +15,10 @@ namespace QuizCompetition.App_Start
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<t_user, UserDTO>();
-            
-        });
+                cfg.CreateMap<t_question, QuestionDTO>();
+                cfg.CreateMap<t_quiz, QuizDTO>();
+
+            });
         }
     }
 }

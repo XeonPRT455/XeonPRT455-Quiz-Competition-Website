@@ -9,6 +9,6 @@ namespace BLL
 {
     public interface IQuizService : IBaseService<t_quiz>
     {
-
+         t_quiz Load(int id);
     }
 }

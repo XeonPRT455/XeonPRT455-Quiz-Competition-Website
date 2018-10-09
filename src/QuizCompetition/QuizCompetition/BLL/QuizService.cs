@@ -15,5 +15,11 @@ namespace BLL
         {
             Dal = QuizDAL;
         }
+
+        public t_quiz Load(int id)
+        {
+            return GetModels(p => p.QuizId == id).FirstOrDefault();
+        }
+
     }
 }

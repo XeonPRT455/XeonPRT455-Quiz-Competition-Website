@@ -15,5 +15,17 @@ namespace BLL
         {
             Dal = QuestionQuizDAL;
         }
+
+        public List<int> getQuestionsId(int id)
+        {
+            List<t_Question_Quiz> lqq = GetModels(p => p.QuizId == id).ToList();
+            List<int> lqqq = new List<int>();
+
+            foreach (t_Question_Quiz tqq in lqq)
+            {
+                lqqq.Add(tqq.QuestionId);
+            }
+            return lqqq;
+        }
     }
 }

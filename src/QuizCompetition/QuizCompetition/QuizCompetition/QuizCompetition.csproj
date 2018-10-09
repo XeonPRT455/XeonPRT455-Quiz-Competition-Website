@@ -274,6 +274,8 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DTO\AutoMapperUtils.cs" />
+    <Compile Include="DTO\QuestionDTO.cs" />
+    <Compile Include="DTO\QuizDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Exceptions\KnownException.cs" />
     <Compile Include="Exceptions\WebApiExceptionFilterAttribute.cs" />
