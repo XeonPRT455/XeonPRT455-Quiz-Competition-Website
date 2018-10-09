@@ -3,6 +3,7 @@ import {QuizComponent} from '../quiz/quiz.component';
 import { from } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UserServiceService } from '../services/user-service.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-answer',
