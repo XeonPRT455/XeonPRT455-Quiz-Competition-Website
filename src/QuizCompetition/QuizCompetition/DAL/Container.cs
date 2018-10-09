@@ -39,6 +39,11 @@ namespace DAL
             var builder = new ContainerBuilder();
             //builder.RegisterType<xxxx>().As<Ixxxx>().InstancePerLifetimeScope();
             builder.RegisterType<UserDAL>().As<IUserDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<QuestionDAL>().As<IQuestionDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<QuestionQuizDAL>().As<IQuestionQuizDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<QuizDAL>().As<IQuizDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<QuizInfoDAL>().As<IQuizInfoDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<ScoreInfoDAL>().As<IScoreInfoDAL>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

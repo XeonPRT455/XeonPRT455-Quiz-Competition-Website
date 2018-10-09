@@ -37,6 +37,11 @@ namespace BLL
             var builder = new ContainerBuilder();
             //builder.RegisterType<xxxx>().As<Ixxxx>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<QuestionService>().As<IQuestionService>().InstancePerLifetimeScope();
+            builder.RegisterType<QuestionQuizService>().As<IQuestionQuizService>().InstancePerLifetimeScope();
+            builder.RegisterType<QuizService>().As<IQuizService>().InstancePerLifetimeScope();
+            builder.RegisterType<QuizInfoService>().As<IQuizInfoService>().InstancePerLifetimeScope();
+            builder.RegisterType<ScoreInfoService>().As<IScoreInfoService>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

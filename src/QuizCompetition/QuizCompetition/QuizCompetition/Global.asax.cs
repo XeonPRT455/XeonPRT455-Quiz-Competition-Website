@@ -13,12 +13,15 @@ namespace QuizCompetition
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             App_Start.AutoMapperConfig.Initialize();
+
+            
         }
     }
 }

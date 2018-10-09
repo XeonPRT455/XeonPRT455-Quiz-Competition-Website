@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BLL
 {
-    public interface IUserDAL:IBaseDAL<t_user>
+    interface IQuestionService : IBaseService<t_question>
     {
-
     }
 }

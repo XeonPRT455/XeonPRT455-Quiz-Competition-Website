@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface IUserDAL:IBaseDAL<t_user>
+    class QuestionQuizDAL : BaseDAL<t_Question_Quiz>, IQuestionQuizDAL
     {
-
     }
 }
