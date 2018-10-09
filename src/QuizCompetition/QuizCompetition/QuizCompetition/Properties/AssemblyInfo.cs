@@ -1,5 +1,4 @@
-﻿using log4net.Config;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -14,8 +13,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-// reference：http://logging.apache.org/log4net/release/manual/configuration.html
-[assembly: XmlConfigurator(Watch = true, ConfigFile = "Log4Net.config")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -23,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2c1a4635-a632-4af3-a106-ae0bc6f862c8")]
+[assembly: Guid("8692b638-09f8-4def-9974-a73cfb6783fb")]
 
 // Version information for an assembly consists of the following four values:
 //
