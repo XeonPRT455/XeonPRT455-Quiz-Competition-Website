@@ -1,6 +1,6 @@
 
 
-<form (ngSubmit)="onSubmit()" [formGroup]="form">
+<form >
 <ul>
 <li  let *ngFor="let question of answer$.results">
 <label for="name">{{question.question}}</label>
@@ -16,7 +16,4 @@
 </ul>
  <button type="submit" class="btn btn-primary">submit</button> 
 <form>
-
- <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br>{{payLoad}}
-  </div>
+  
