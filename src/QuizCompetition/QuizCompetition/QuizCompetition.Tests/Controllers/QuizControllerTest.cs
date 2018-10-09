@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuizCompetition.Controllers;
 using QuizCompetition.DTO;
 using System.Linq;
+using QuizCompetition.App_Start;
 
 namespace QuizCompetition.Tests.Controllers
 {
@@ -16,11 +17,14 @@ namespace QuizCompetition.Tests.Controllers
     {
         public QuizControllerTest()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            
         }
 
+        [ClassInitialize]
+        static public void Init(TestContext context)
+        {
+            AutoMapperConfig.Initialize();
+        }
         private TestContext testContextInstance;
 
         /// <summary>
