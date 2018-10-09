@@ -42,6 +42,8 @@ namespace BLL
             builder.RegisterType<QuizService>().As<IQuizService>().InstancePerLifetimeScope();
             builder.RegisterType<QuizInfoService>().As<IQuizInfoService>().InstancePerLifetimeScope();
             builder.RegisterType<ScoreInfoService>().As<IScoreInfoService>().InstancePerLifetimeScope();
+            builder.RegisterType<OptionsService>().As<IOptionsService>().InstancePerLifetimeScope();
+
             container = builder.Build();
         }
     }

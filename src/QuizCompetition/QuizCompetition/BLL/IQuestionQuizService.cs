@@ -9,5 +9,6 @@ namespace BLL
 {
     public interface IQuestionQuizService : IBaseService<t_Question_Quiz>
     {
+        List<int> getQuestionsId(int id);
     }
 }

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    interface IOptionsService: IBaseService<t_options>
+    public interface IOptionsService: IBaseService<t_options>
     {
+        List<t_options> GetOptionsList(int id);
+
     }
 }

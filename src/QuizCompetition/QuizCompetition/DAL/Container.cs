@@ -44,6 +44,7 @@ namespace DAL
             builder.RegisterType<QuizDAL>().As<IQuizDAL>().InstancePerLifetimeScope();
             builder.RegisterType<QuizInfoDAL>().As<IQuizInfoDAL>().InstancePerLifetimeScope();
             builder.RegisterType<ScoreInfoDAL>().As<IScoreInfoDAL>().InstancePerLifetimeScope();
+            builder.RegisterType<OptionsDAL>().As<IOptionsDAL>().InstancePerLifetimeScope();
             container = builder.Build();
         }
     }

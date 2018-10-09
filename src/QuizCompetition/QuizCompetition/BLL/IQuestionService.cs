@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    interface IQuestionService : IBaseService<t_question>
+    public interface IQuestionService : IBaseService<t_question>
     {
+        List<t_question> GetListById(List<int> idl);
     }
 }
