@@ -1,35 +1,8 @@
-<div class="list-group">
-    <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">
-            Quiz
-        </h4>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">
-            aaaaaaaaa
-        </h4>
-        <p class="list-group-item-text">
-            bbbbbbbbb
-        </p>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">
-           ccccccccc
-        </h4>
-        <p class="list-group-item-text">
-           dddddddddddd
-        </p>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">
-            eeeeeeeeee
-        </h4>
-        <p class="list-group-item-text">
-           fffffffffff
-        </p>
-    </a>
-    <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">gggggggggg</h4>
-        <p class="list-group-item-text">hhhhhhhhhhhhh。</p>
-    </a>
-</div>  
+<h1>Users</h1>
+
+<ul>
+  <li *ngFor="let user of quiz$">
+
+<a href="#" class="list-group-item active">
+   {{ user.name }}1111
+</a>
