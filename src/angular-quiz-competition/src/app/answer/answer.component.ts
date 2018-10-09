@@ -20,5 +20,7 @@ constructor(private route: ActivatedRoute, private data: UserServiceService) {
       data => this.answer$ = data
     );
   }
+  result(){
 
+  }
 }

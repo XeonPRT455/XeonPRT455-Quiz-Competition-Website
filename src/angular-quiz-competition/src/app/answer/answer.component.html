@@ -1,6 +1,8 @@
 
 
-<form >
+
+<form>
+
 <ul>
 <li  let *ngFor="let question of answer$.results">
 <label for="name">{{question.question}}</label>
@@ -8,12 +10,12 @@
 <li let *ngFor="let a of question.incorrect_answers">
 <div class="radio">
     <label>
-        <input type="radio" name="{{question.question}}" id="1" value="option1" > {{a}}
+        <input type="radio" name="{{question.question}}" id="1" value="{{question.question}}" [(ngModel)]="a" > {{a}}
     </label>
     
 </div>
 </ul>
 </ul>
- <button type="submit" class="btn btn-primary">submit</button> 
+ <button class="btn btn-primary" (click)=result() >submit</button> 
 <form>
   
