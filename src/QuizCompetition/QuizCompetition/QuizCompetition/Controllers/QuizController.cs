@@ -46,6 +46,9 @@ namespace QuizCompetition.Controllers
             var quiz = QuizService.Load(id);
 
             var quizD = Mapper.Map<QuizDTO>(quiz);
+           
+          
+
             return quizD;
             
         }

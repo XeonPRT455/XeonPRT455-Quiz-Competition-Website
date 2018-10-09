@@ -11,8 +11,7 @@ namespace Model
 {
     using System;
     using System.Collections.Generic;
-
-    [Newtonsoft.Json.JsonObject]
+    
     public partial class t_user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

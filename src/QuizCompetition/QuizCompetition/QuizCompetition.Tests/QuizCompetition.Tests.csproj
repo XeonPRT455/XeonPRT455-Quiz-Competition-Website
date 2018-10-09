@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA3E0E37-69E2-4FD5-924A-EA4F41E882E7}</ProjectGuid>
+    <ProjectGuid>{057D98B5-F3D4-47B9-9B8E-1645F67EAA46}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuizCompetition.Tests</RootNamespace>
@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuizCompetition\QuizCompetition.csproj">
-      <Project>{7BA51C97-C349-45CB-B340-D40C4BCAEA42}</Project>
+      <Project>{9584AA9E-B660-4CBC-8D43-0EFC0AC51811}</Project>
       <Name>QuizCompetition</Name>
     </ProjectReference>
   </ItemGroup>
