@@ -10,6 +10,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { AnswerComponent } from './answer/answer.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AnswerComponent } from './answer/answer.component';
     QuizComponent,
     ContactComponent,
     LoginComponent,
-    AnswerComponent
+    AnswerComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

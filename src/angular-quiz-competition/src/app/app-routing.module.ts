@@ -5,6 +5,8 @@ import {QuizComponent} from './quiz/quiz.component';
 import {ContactComponent} from './contact/contact.component';
 import {LoginComponent} from './login/login.component';
 import {AnswerComponent} from './answer/answer.component';
+import {ResultComponent} from './result/result.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -24,8 +26,12 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'answer',
+    path: 'answer/:question',
     component: AnswerComponent
+  },
+  {
+    path: 'result',
+    component: ResultComponent
   },
 ];
 

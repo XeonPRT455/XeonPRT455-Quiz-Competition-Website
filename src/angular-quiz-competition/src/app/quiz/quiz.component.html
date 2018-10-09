@@ -1,8 +1,10 @@
+
 <h1>Users</h1>
 
 <ul>
-  <li *ngFor="let user of quiz$">
 
-<a href="answer" class="list-group-item active">
-   {{ user.name }}1111
+  <li let *ngFor="let user of quiz$.results">
+
+<a href="answer/{{ user.question}}" class="list-group-item active">
+   {{ user.question}}
 </a>

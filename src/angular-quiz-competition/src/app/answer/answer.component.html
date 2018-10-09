@@ -1,18 +1,18 @@
 
 
-<form action="quiz" method="post" >
-
-<label for="name">title</label>
+<form action="result" >
+<ul>
+<li  let *ngFor="let question of answer$.results">
+<label for="name">{{question.question}}</label>
+<ul>
+<li let *ngFor="let a of question.incorrect_answers">
 <div class="radio">
     <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> A
+        <input type="radio" name="{{question.question}}" id="1" value="option1" > {{a}}
     </label>
+    
 </div>
-<div class="radio">
-    <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">B 
-    </label>
-</div>
-
-<button type="submit" class="btn btn-default">submit</button>
+</ul>
+</ul>
+ <button type="submit" class="btn btn-primary">submit</button> 
 <form>
