@@ -16,7 +16,7 @@ export class UserServiceService {
 
   
   getQuiz() {
-    return this.http.get('https://opentdb.com/api.php?amount=3');
+    return this.http.get('http://172.26.111.1:32417/api/Quiz/getQuestions/1');
   }
 
   getAccountModel(userid: string): Observable<Account> {   

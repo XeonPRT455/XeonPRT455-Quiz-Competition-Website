@@ -21,6 +21,5 @@ constructor(private route: ActivatedRoute, private data: UserServiceService) {
     );
   }
   result(){
-
   }
 }
